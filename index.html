@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+
+    <style type="text/css">
+        @media all and (min-width: 992px) {
+            .navbar .nav-item .dropdown-menu {
+                display: none;
+            }
+
+
+
+            .navbar .nav-item:hover .dropdown-menu {
+                display: block;
+            }
+
+            .navbar .nav-item .dropdown-menu {
+                margin-top: 0;
+            }
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="header pt-4 pb-5">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light shadow">
+                <div class="container">
+                    <a class="navbar-brand" href="#">
+                        <img src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ibG9nby1zdmcgdS1tcmctMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgODQyIDE2OCIgcm9sZT0iaW1nIj48dGl0bGU+SGVscCBTY291dCBsb2dvPC90aXRsZT48ZGVzYyBpZD0iaGVscHNjb3V0LWxvZ28tZGVzYy0xIj5IZWxwIERlc2sgc29mdHdhcmUgLSBDdXN0b21lciBTdXBwb3J0IFNvZnR3YXJlPC9kZXNjPgogICAgPHN0eWxlPi5zdDN7ZmlsbDojMmEzYjQ3fS5zdDF7ZmlsbDojMTI5MmVlfTwvc3R5bGU+CiAgICA8cGF0aCBjbGFzcz0ic3QzIiBkPSJNMjMyIDMxLjVsLS4zLjF2NDQuN2gtNDIuNFYzMS42bC0uMy0uMWMtNi4zLTEuMy0xMi41LTEuMy0xOC43IDBsLS4zLjF2MTAyLjhsLjMuMWMzLjEuNiA2LjIgMSA5LjMgMXM2LjItLjMgOS40LTFsLjMtLjFWOTIuN2g0Mi40djQxLjdsLjMuMWM2LjIgMS4zIDEyLjUgMS4zIDE4LjcgMGwuMy0uMVYzMS42bC0uMy0uMWMtNi4zLTEuMi0xMi41LTEuMi0xOC43IDB6TTI5Ny43IDYwLjRjLTIyLjIgMC0zNS40IDE0LTM1LjQgMzcuNSAwIDEyLjIgMi44IDIxLjkgOC40IDI4LjYgNi4xIDcuMyAxNS4yIDExIDI3LjMgMTEgMjAuNSAwIDMxLTEyLjIgMzIuMy0yNC4zdi0uM2wtLjMtLjFjLTUuMi0xLjctMTAtMi4xLTE1LjctMS4zaC0uMnYuMmMtMS4yIDcuMi03LjIgMTEuNS0xNS45IDExLjUtMTIuMiAwLTE4LjItNi43LTE4LjQtMjAuNWg1MS42di0uM2MxLjUtMTMuNi0xLjItMjQuNi03LjgtMzIuMS02LjEtNi40LTE1LTkuOS0yNS45LTkuOXptLS4yIDEzLjNjNS4xIDAgOS40IDEuNiAxMi4zIDQuNyAzIDMuMiA0LjUgOCA0LjIgMTMuN2gtMzQuMmMuMy0xMS43IDYuOC0xOC40IDE3LjctMTguNHpNMzQzLjkgMzEuNWwtLjMuMXYxMDIuOGwuMy4xYzIuOS42IDUuOCAxIDguOCAxIDIuOSAwIDUuOS0uMyA4LjgtMWwuMy0uMVYzMS42bC0uMy0uMWMtNS44LTEuMy0xMS43LTEuMi0xNy42IDB6TTQxMi40IDYwLjRjLTcuNyAwLTE1LjggMy0yMy41IDguN2wtMS4xLTUuNC0uMi0uMWMtNC40LTEuMy04LTEuMy0xMi4zIDBsLS4yLjFWMTY2bC4zLjFjMi45LjYgNS44IDEgOC44IDFzNS45LS4zIDguOC0xbC4zLS4xdi0zNC4yYzYuMSAzLjkgMTIuNiA1LjcgMTkuOSA1LjcgMjAuMiAwIDMyLjMtMTQuMyAzMi4zLTM4LjQtLjEtMjQuNS0xMi4xLTM4LjctMzMuMS0zOC43ek0zOTMgODAuN2M1LjQtMy43IDEwLjQtNS40IDE1LjgtNS40IDEyLjMgMCAxOSA4LjUgMTkgMjQuMSAwIDE1LjMtNi42IDIzLjQtMTkuMiAyMy40LTUuNCAwLTEwLjUtMS43LTE1LjYtNS4zVjgwLjd6TTUyMi42IDc5LjFjLTMuMS0xLjItNS45LTIuMi04LjYtMy4xLTE0LTUtMjIuNC04LTIyLjYtMTUuNi0uMS0zLjUgMS02LjUgMy40LTkgMy41LTMuNiA5LjQtNS41IDE2LjYtNS41IDcuMSAwIDEyLjYgMS45IDE1LjkgNS40IDIuOCAzIDQgNy4xIDMuNyAxMi4ydi4zbC4zLjFjNi4xIDEuMiAxMi4yIDEuMSAxOC44LS40bC4zLS4xdi0uM2MuNC04LjYtMi4yLTE2LjEtNy41LTIxLjctNi42LTctMTcuMi0xMC43LTMwLjYtMTAuOGgtLjRjLTI0LjkgMC0zOS45IDExLjEtNDAuMSAyOS43LS4xIDE4LjUgMTYuOSAyNC43IDI3LjEgMjguM2wxLjUuNmMzLjQgMS4yIDYuNiAyLjMgOS40IDMuMyAxMy44IDQuOCAyMi4xIDcuNyAyMi40IDE1IC4xIDMuOC0xIDYuOS0zLjMgOS4zLTMuMyAzLjQtOS4xIDUuMS0xNi44IDUtOC41IDAtMTUtMi4yLTE4LjctNi4yLTIuNy0zLTMuOC02LjgtMy40LTExLjR2LS4zbC0uMy0uMWMtNi4yLTEuMi0xMi41LTEuMS0xOC43LjNsLS4yLjF2LjNjLS41IDguMyAyIDE1LjcgNy40IDIxLjQgNy4yIDcuNyAxOSAxMS43IDM0LjIgMTEuNiAxNC45IDAgMzkuNC00IDM5LjYtMzAtLjMtMTcuMy0xNS4xLTIyLjktMjkuNC0yOC40ek01OTYuNyA3NS4zYzEyLjMgMCAxNS4yIDggMTUuOCAxMi43di4zaC4zYzUuNy45IDExLjEuNSAxNi4zLTFsLjMtLjF2LS4zYy0uNS03LjItMy42LTEzLjctOC43LTE4LjQtNS44LTUuMy0xNC4xLTguMi0yMy45LTguMi0yMy40IDAtMzYuMyAxMy43LTM2LjMgMzguNiAwIDI0LjggMTIuOCAzOC41IDM2IDM4LjUgMTAgMCAxOC40LTIuOSAyNC4zLTguNCA0LjktNC42IDcuOS0xMC44IDguNS0xNy41di0uM2wtLjMtLjFjLTQuOS0xLjctMTAuMy0yLTE2LjItMWgtLjJ2LjJjLTEuNiAxMS4yLTEyLjUgMTItMTUuOCAxMi0xMi42IDAtMTguNS03LjUtMTguNS0yMy42LS4xLTE1LjkgNS44LTIzLjQgMTguNC0yMy40ek02NzMuNyA2MC40Yy0yMyAwLTM1LjcgMTMuNy0zNS43IDM4LjYgMCAyNC44IDEyLjcgMzguNSAzNS43IDM4LjUgMjMgMCAzNS43LTEzLjcgMzUuNy0zOC41IDAtMjQuOS0xMi43LTM4LjYtMzUuNy0zOC42ek02OTIgOTkuMWMwIDE1LjktNiAyMy42LTE4LjMgMjMuNnMtMTguMy03LjctMTguMy0yMy42YzAtMTYuMiA1LjgtMjMuOCAxOC4zLTIzLjggMTIuMyAwIDE4LjMgNy44IDE4LjMgMjMuOHpNNzY3IDYzLjdsLS4zLjFWMTE1Yy01LjggNS0xMS4xIDcuMi0xNy4yIDcuMi04LjYgMC0xMi4zLTQuOS0xMi4zLTE2LjV2LTQybC0uMy0uMWMtNS44LTEuNC0xMS43LTEuNC0xNy42IDBsLS4zLjF2NDYuMWMwIDE3LjUgOS40IDI3LjYgMjUuOSAyNy42IDguOCAwIDE2LjUtMy40IDI0LjgtMTFsMS43IDggLjIuMWM0LjIgMS4xIDguNiAxLjEgMTIuOCAwbC4zLS4xVjYzLjdsLS4zLS4xYy01LjYtMS40LTExLjUtMS40LTE3LjQuMXpNODQwLjEgMTIwLjdsLS4xLS4zLS4zLjFjLTcgMS42LTExLjEgMS41LTEzLjUtLjQtMi0xLjYtMi45LTQuNC0yLjktOC44Vjc4LjVoMTQuMmwuMS0uM2MxLTQuOCAxLTkuNyAwLTE0LjZsLS4xLS4zaC0xNC4yVjQzLjlsLS4zLS4xYy01LjgtMS4zLTExLjctMS4zLTE3LjUgMGwtLjMuMS4xIDE5LjRoLTlsLS4xLjNjLTEuMSA0LjgtMS4xIDkuOCAwIDE0LjZsLjEuM2g5bC4xIDMxLjVjMCA4LjguNSAxNy43IDYuNiAyMi44IDMuMyAyLjcgOC4xIDQuMSAxNC4zIDQuMSAzLjggMCA4LjItLjUgMTMuMy0xLjVoLjJsLjEtLjJjMS40LTQuNyAxLjUtOS42LjItMTQuNXoiLz4KICAgIDxwYXRoIGNsYXNzPSJzdDEiIGQ9Ik0xMC45IDk3LjJsNDguNi00OC42YzYuMy02LjIgMTAuMi0xNC45IDEwLjItMjQuNCAwLTkuNC0zLjgtMTgtOS45LTI0LjJMMTEuMiA0OC42QzQuOSA1NC44IDEgNjMuNSAxIDczYzAgOS41IDMuOCAxOCA5LjkgMjQuMnpNMTI4LjYgNjguOEw4MCAxMTcuNGMtNi4zIDYuMi0xMC4yIDE0LjktMTAuMiAyNC40IDAgOS40IDMuOCAxOCA5LjkgMjQuMmw0OC42LTQ4LjZjNi4zLTYuMiAxMC4yLTE0LjkgMTAuMi0yNC40IDAtOS41LTMuOC0xOC05LjktMjQuMnpNMTI4LjMgNDguN2M2LjMtNi4yIDEwLjItMTQuOSAxMC4yLTI0LjQgMC05LjQtMy44LTE4LTkuOS0yNC4yTDExLjIgMTE3LjRDNC45IDEyMy43IDEgMTMyLjMgMSAxNDEuOWMwIDkuNCAzLjggMTggOS45IDI0LjJMMTI4LjMgNDguN3oiLz4KPC9zdmc+Cg=="
+                            alt="" width="148" height="33" class="d-inline-block">
+
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav"
+                        aria-expanded="false" aria-label="Toggle navigation">
+
+
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+
+                    <div class="collapse  navbar-collapse " id="main_nav">
+                        <ul class="navbar-nav ">
+                            <li class="nav-item  dropdown ">
+
+                                <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                                    aria-expanded="true" aria-haspopup="true">
+                                    Features
+                                </a>
+                                <!---Submeniu Product-->
+
+
+
+                                <div class="dropdown-menu">
+
+
+                                    <div class="row ">
+
+
+                                        <div class="col-12 col-sm-6 col-md-6 submenu">
+                                            <ul class="list-unstyled">
+                                                <li>
+                                                    <a class="dropdown-item ">
+                                                        <h2>
+                                                            Product Tour
+                                                        </h2>
+
+
+                                                        <small>
+                                                            Feel the LiveChat experience
+                                                    </a> </small>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item ">
+                                                        <h2>Product Tour</h2>
+
+
+                                                        <small>
+                                                            Feel the LiveChat experience
+                                                        </small>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item ">
+                                                        <h2>Product Tour</h2>
+
+
+                                                        <small>
+                                                            Feel the LiveChat experience
+                                                        </small>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item">
+                                                        <h2>Product Tour</h2>
+
+
+                                                        <small>
+                                                            Feel the LiveChat experience
+                                                        </small>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="col-12 col-sm-6 col-md-6 submenu">
+                                            <ul class="list-unstyled">
+                                                <li>
+                                                    <h2 class="" style="color:gray; padding-left: 2rem; ">Solutions</h2>
+
+                                                </li>
+                                                <li>
+                                                    <i class="fas fa-user"></i>
+                                                    <a class="dropdown-item submenu-icon">
+                                                        <h2>Coustomer support</h2>
+                                                    </a>
+
+                                                </li>
+                                                <li>
+                                                    <i class="fas fa-shopping-cart"></i>
+                                                    <a class="dropdown-item submenu-icon">
+                                                        <h2>Shop&Marketing</h2>
+                                                    </a>
+
+                                                </li>
+                                                <li>
+                                                    <i class="fas fa-globe"></i>
+                                                    <a class="dropdown-item submenu-icon">
+                                                        <h2>Enterprise</h2>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+
+
+
+                                    </div>
+
+                                </div>
+
+
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link dropdown-toggle" aria-current="page" href="#"
+                                    data-bs-toggle="dropdown" aria-expanded="true" aria-haspopup="true">Resources</a>
+                                <div class="dropdown-menu">
+
+
+                                    <div class="row ">
+
+
+                                        <div class="col-12 col-sm-6 col-md-6 submenu">
+                                            <ul class="list-unstyled">
+                                                <li>
+                                                    <a class="dropdown-item ">
+                                                        <h2>
+                                                            Product Tour
+                                                        </h2>
+
+
+                                                        <small>
+                                                            Feel the LiveChat experience
+                                                    </a> </small>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item ">
+                                                        <h2>Product Tour</h2>
+
+
+                                                        <small>
+                                                            Feel the LiveChat experience
+                                                        </small>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item ">
+                                                        <h2>Product Tour</h2>
+
+
+                                                        <small>
+                                                            Feel the LiveChat experience
+                                                        </small>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item">
+                                                        <h2>Product Tour</h2>
+
+
+                                                        <small>
+                                                            Feel the LiveChat experience
+                                                        </small>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+
+
+
+
+
+                                    </div>
+
+                                </div>
+
+
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="#">MarketPlace</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="#">Help Center</a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+
+                    <div class="upgrade collapse  navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link  " href="#">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <button type="button" class="btn btn-primary ">
+                                    Free trial</button>
+                            </li>
+                        </ul>
+
+
+                    </div>
+
+                </div>
+            </nav>
+
+
+        </div>
+    </div>
+    <div class="support pt-5 pb-5">
+        <div class="container-fluid">
+            <div class="row pt-5 d-flex align-items-center">
+                <div class="col-12 col-md-6 feedback-text">
+                    <h1>One stop customer support</h1>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis rerum soluta possimus iure
+                        dolore, dignissimos reiciendis ad sit. Rem quam hic quo nam, vel culpa deserunt adipisci quasi
+                        nemo accusamus!</p>
+                    <div class="    mx-auto   ">
+                        <form method="GET" class="pt-5 pb-3 d-flex flex-column flex-sm-row ">
+
+
+                            <input type="email" class="form " placeholder="Work email*">
+
+
+                            <button type="submit" class=" btn btn-primary ">Sign up free</button>
+
+
+                        </form>
+                    </div>
+                    <p><strong>Scaling your support team?
+                            <a class="link text-decoration-none customer-link">Get a demo </a></strong></p>
+                </div>
+                <div class="col-12 col-md-6 d-flex support-video">
+                    <video class="w-100" autoplay="" playsinline="" muted="" loop="">
+                        <source src="design/HomeHero--video-f7174826a124e57fce535c7cec781df6.webm" type="video/webm">
+
+                    </video>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="partner mx-auto text-center pt-5 pb-5">
+        <div class="container-fluid">
+            <h2>Trusted by more than 12,000 businesses in&nbsp;140&nbsp;countries</h2>
+            <div class="row">
+                <div class="col-6 col-sm-4 col-md-2">
+                    <img class="img"
+                        src="https://hs-marketing.imgix.net/images/components/CustomerLogos/Spindrift-2.png?ixlib=gatsby-transform-url-1.0.2&fit=crop&ar=1.84%3A1&auto=format%2Ccompress&w=116">
+                </div>
+                <div class="col-6 col-sm-4 col-md-2">
+                    <img
+                        src="https://hs-marketing.imgix.net/images/components/CustomerLogos/Spindrift-2.png?ixlib=gatsby-transform-url-1.0.2&fit=crop&ar=1.84%3A1&auto=format%2Ccompress&w=116">
+                </div>
+                <div class="col-6 col-sm-4 col-md-2">
+                    <img
+                        src="https://hs-marketing.imgix.net/images/components/CustomerLogos/Spindrift-2.png?ixlib=gatsby-transform-url-1.0.2&fit=crop&ar=1.84%3A1&auto=format%2Ccompress&w=116">
+                </div>
+                <div class="col-6 col-sm-4 col-md-2">
+                    <img
+                        src="https://hs-marketing.imgix.net/images/components/CustomerLogos/Spindrift-2.png?ixlib=gatsby-transform-url-1.0.2&fit=crop&ar=1.84%3A1&auto=format%2Ccompress&w=116">
+                </div>
+                <div class="col-6 col-sm-4 col-md-2">
+                    <img
+                        src="https://hs-marketing.imgix.net/images/components/CustomerLogos/Spindrift-2.png?ixlib=gatsby-transform-url-1.0.2&fit=crop&ar=1.84%3A1&auto=format%2Ccompress&w=116">
+                </div>
+                <div class="col-6 col-sm-4 col-md-2">
+                    <img
+                        src="https://hs-marketing.imgix.net/images/components/CustomerLogos/Spindrift-2.png?ixlib=gatsby-transform-url-1.0.2&fit=crop&ar=1.84%3A1&auto=format%2Ccompress&w=116">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg">
+        <img src="">
+    </div>
+    <div class="experience pt-5 pb-5">
+        <div class="container-fluid">
+            <div class="w-75 mx-auto text-center">
+                <h2>Dedicated to support</h2>
+                <p>
+                    Your support team needs a tool purpose-built for their needs, by experts who have proven results.
+                    We’re focused on one thing: helping you deliver the best customer experience possible.
+                </p>
+            </div>
+            <div class="row ">
+                <div class="col-12 col-sm-10 col-lg-5 mx-auto pt-5 pb-5">
+                    <div class=" mx-auto d-flex flex-column flex-sm-row pt-4 pb-4">
+                        <div class="experience-image col-12 col-sm-3 ">
+                            <img class="img-fluid" 
+                                src="https://hs-marketing.imgix.net/images/icons/icon--computer.png?ixlib=gatsby-transform-url-1.0.2&fit=crop&w=79&h=64&auto=format%2Ccompress&ar=undefined&fm=webp&dpr=2&q=50">
+
+                        </div>
+                        <div class="experience-text col-11 col-sm-9">
+                            <a href="" class="customer-link">Deep support functionality</a>
+                            <p1>We have customers with global teams and tens of millions of customers that
+                                use
+                                Help Scout to achieve a zero inbox. Whether you support thousands or millions of
+                                customers,
+                                Help Scout is well-equipped for the journey.</p1>
+                        </div>
+                    </div>
+                    <div class=" mx-auto d-flex flex-column flex-sm-row pt-4 pb-4">
+                        <div class="experience-image col-12 col-sm-3 ">
+                            <img class="img-fluid" 
+                                src="https://hs-marketing.imgix.net/images/icons/icon--computer.png?ixlib=gatsby-transform-url-1.0.2&fit=crop&w=79&h=64&auto=format%2Ccompress&ar=undefined&fm=webp&dpr=2&q=50">
+
+                        </div>
+                        <div class="experience-text col-11 col-sm-9">
+                            <a href="" class="customer-link">Deep support functionality</a>
+                            <p1>We have customers with global teams and tens of millions of customers that
+                                use
+                                Help Scout to achieve a zero inbox. Whether you support thousands or millions of
+                                customers,
+                                Help Scout is well-equipped for the journey.</p1>
+                        </div>
+                    </div>
+                    <div class=" mx-auto d-flex flex-column flex-sm-row pt-4 pb-4">
+                        <div class="experience-image col-12 col-sm-3">
+                            <img class="img-fluid" 
+                                src="https://hs-marketing.imgix.net/images/icons/icon--computer.png?ixlib=gatsby-transform-url-1.0.2&fit=crop&w=79&h=64&auto=format%2Ccompress&ar=undefined&fm=webp&dpr=2&q=50">
+
+                        </div>
+                        <div class="experience-text col-11 col-sm-9">
+                            <a href="" class="customer-link">Deep support functionality</a>
+                            <p1>We have customers with global teams and tens of millions of customers that
+                                use
+                                Help Scout to achieve a zero inbox. Whether you support thousands or millions of
+                                customers,
+                                Help Scout is well-equipped for the journey.</p1>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-12 col-lg-7 mx-auto experience-video position-relative d-flex  pt-5 pb-5">
+                    <video class="" preload="auto" loop muted autoplay width="100%" height="auto"
+                        src="https://www.helpscout.com/static/Home-OurPeople-Composite-36a4b8f44ed4f6e92633d09a167d97c7.webm"></video>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="review mt-5 mb-5 pt-5 pb-5">
+        <div class="container-fluid ">
+            <div class="sparkletitle">
+                <h2 class=""><span style="z-index: 1;position: relative;">Why choose Help Scout?</span></h2>
+            </div>
+            <div class="row pt-5">
+                <div class="review-text col-12 col-md-5">
+                    <h4 class="pb-3">Simple</h4>
+                    <h3 class="pb-5" style="color: rgb(29, 43, 54);">Start supporting customers sooner</h3>
+                    <p1>
+                        Some support software takes dedicated admins and consultants to operate. Not Help Scout.
+                        We are committed to ease-of-use because it makes your team more efficient, scalable, and
+                        trackable - freeing up your time and energy to delight more customers.</p1>
+                    <br>
+                    <a class="link text-decoration-none customer-link pt-5 pb-5">How customer excel with Help
+                        Scout</a></strong>
+
+                </div>
+                <div class="review-image col-12 col-md-7 d-flex">
+                    <!--La ecran mai mic de 680px nu imi apare imaginea de fundal-->
+                    <div class="">
+                        <img class="img w-100  "
+                            src="https://hs-marketing.imgix.net/images/components/features/MailboxFeature/MailboxFeature--screenshot.png?ixlib=gatsby-transform-url-1.0.2&fit=crop&ar=1.12%3A1&auto=format%2Ccompress&fm=webp&w=4088">
+                    </div>
+                    <div class="image-chat">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <img class="img "
+                            src="https://hs-marketing.imgix.net/images/components/features/MailboxFeature/MailboxFeature--avatar.png?ixlib=gatsby-transform-url-1.0.2&fit=crop&ar=1%3A1&auto=format%2Ccompress&fm=webp&w=282">
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="power mt-5 mb-5 pt-5 pb-5 ">
+        <div class="container-fluid pt-5">
+            <div class="flex-column-reverse flex-md-row  d-flex  align-items-start">
+                <div class=" col-8   col-md-4 mx-auto  video-shadow" style="left: 0;">
+                    <video class="w-100  shadow" autoplay="" playsinline="" muted="" loop="">
+                        <source type="video/webm"  src="design/power.webm">
+                    </video>
+
+                </div>
+                <div class="  col-11  col-md-5 mx-auto pt-5 d-flex flex-column justify-content-between" >
+                    <div>
+                        <h4 class="pb-3">Simple</h4>
+                        <h3 class="pb-3" style="color: rgb(29, 43, 54);">Start supporting customers sooner</h3>
+                        <p1>
+                            Some support software takes dedicated admins and consultants to operate. Not Help Scout.
+                            We are committed to ease-of-use because it makes your team more efficient, scalable, and
+                            trackable - freeing up your time and energy to delight more customers.</p1>
+                        <br>
+                        <a class="link text-decoration-none customer-link pt-3 pb-3">How customer excel with Help
+                            Scout</a></strong>
+                    </div>
+                    <div>
+
+                        <img class="img d-none d-md-block"
+                            src="https://hs-marketing.imgix.net/images/components/features/KnowledgeBaseFeature/KnowledgeBaseFeature--illustration.png?ixlib=gatsby-transform-url-1.0.2&fit=crop&w=326&h=175&auto=format%2Ccompress&ar=undefined&dpr=4&q=23">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="customer mt-5 mb-5 pt-5 pb-5 ">
+        <div class="container-fluid pt-5">
+            <div class="flex-column flex-md-row  d-flex align-items-start ">
+
+                <div class="  col-11  col-md-5 mx-auto pt-5 d-flex flex-column justify-content-between">
+                    <div>
+                        <h4 class="pb-3">Simple</h4>
+                        <h3 class="pb-5" style="color: rgb(29, 43, 54);">Start supporting customers sooner</h3>
+                        <p1>
+                            Some support software takes dedicated admins and consultants to operate. Not Help Scout.
+                            We are committed to ease-of-use because it makes your team more efficient, scalable, and
+                            trackable - freeing up your time and energy to delight more customers.</p1>
+                        <br>
+                        <a class="link text-decoration-none customer-link pt-5 pb-5">Learn more about Help Scout</a></strong>
+                    </div>
+                    <div>
+
+
+                    </div>
+
+                </div>
+                <div class=" col-8   col-md-4 mx-auto pt-5 video-shadow" style="right: 0;">
+                    <video class="w-100  shadow" autoplay="" playsinline="" muted="" loop="">
+                        <source type="video/webm"  src="design/power.webm">
+                    </video>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="support feedback pt-5 ">
+        <div class="container-fluid">
+            <div>
+                <img class="img "
+                    src="https://hs-marketing.imgix.net/images/components/GetStartedCallout/GetStartedCallout--illo-museum-top-left.png?ixlib=gatsby-transform-url-1.0.2&fit=crop&ar=3%3A1&auto=format%2Ccompress&w=244">
+
+            </div>
+            <div class="row pt-5">
+                <div class="col-12 col-md-10 col-lg-7 mx-auto feedback-text">
+                    <h1>One stop customer support</h1>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis rerum soluta possimus iure
+                        dolore, dignissimos reiciendis ad sit. Rem quam hic quo nam, vel culpa deserunt adipisci quasi
+                        nemo accusamus!</p>
+
+
+
+
+                    <button type="submit" class="mx-auto btn btn-primary p-2 fs-5 fw-bolder">Sign up free</button>
+
+
+
+
+                </div>
+                <div class="col-12 col-md-10 col-lg-5 d-flex justify-content-end">
+                    <img class="img  feedback-img"
+                        src="https://hs-marketing.imgix.net/images/components/GetStartedCallout/GetStartedCallout--illo-museum-bottom-right.png?ixlib=gatsby-transform-url-1.0.2&fit=crop&ar=1.65%3A1&auto=format%2Ccompress&w=7400">
+
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="footer pt-5">
+    <div class="container-fluid">
+        <div class="row mx-auto">
+            <div class="col-12 col-lg-3 logo_column ">
+                <a>
+                    <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 137.5 166" role="img"><path fill="#1292ee" d="M9.9 97.2l48.6-48.6c6.3-6.2 10.2-14.9 10.2-24.4 0-9.4-3.8-18-9.9-24.2L10.2 48.6C3.9 54.8 0 63.5 0 73c0 9.5 3.8 18 9.9 24.2zM127.6 68.8L79 117.4c-6.3 6.2-10.2 14.9-10.2 24.4 0 9.4 3.8 18 9.9 24.2l48.6-48.6c6.3-6.2 10.2-14.9 10.2-24.4 0-9.5-3.8-18-9.9-24.2zM127.3 48.7s0-.1 0 0c6.3-6.2 10.2-14.9 10.2-24.4 0-9.4-3.8-18-9.9-24.2L10.2 117.4C3.9 123.6 0 132.3 0 141.8c0 9.4 3.8 18 9.9 24.2L127.3 48.7z"></path></svg>
+                </a>
+                <h3 class="pt-2 pb-4"> Tools for the world's most customer-centric businesses</h3>
+
+            </div>
+            <div class="col-12  col-md-3 col-lg-2 footer_column pt-3 pb-3">
+                <h5 class="pt-1 pb-1" >Platform</h5>
+                <ul class="list-unstyled ">
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox jhbfdjhsbfd jdhbdchb</a></li>
+                   
+                    
+                </ul>
+
+            </div>
+            <div class="col-12  col-md-3 col-lg-2 footer_column pt-3 pb-3">
+                <h5 class="pt-1 pb-1" >Platform</h5>
+                <ul class="list-unstyled">
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                   
+                    
+                </ul>
+
+            </div>
+            <div class="col-12  col-md-3 col-lg-2 footer_column pt-3 pb-3">
+                <h5 class="pt-1 pb-1" >Platform</h5>
+                <ul class="list-unstyled">
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                   
+                    
+                </ul>
+
+            </div>
+            <div class="col-12  col-md-3 col-lg-2 footer_column pt-3 pb-3">
+                <h5 class="pt-1 pb-1" >Platform</h5>
+                <ul class="list-unstyled">
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                    <li class="pt-1 "><a class="footer_link ">Shares Inbox</a></li>
+                   
+                    
+                </ul>
+
+            </div>
+            
+        </div>
+        <div class="row sitefooter pt-3">
+            <div class="col-12 col-lg-3">
+            <ul class="list-unstyled  ">
+                <li><a><i class="fab fa-twitter p-1"></i></a></li>
+                <li><a><i class="fab fa-twitter p-1"></i></a></li>
+                <li><a><i class="fab fa-twitter p-1"></i></a></li>
+            </ul>
+        </div>
+        <div class="col-12 col-lg-7 ">
+
+        <p2  > <strong>  <img class="img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAAAUCAMAAAAHtrtKAAAApVBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+4/eNVAAAANnRSTlMA0SjklnMH+fLeehvqt6xTT0hBEfTayr+mkW0j5sSwqZqLglczLh8SCgYCn2BbOzgW1cdoD+zeM+FjAAABfElEQVQ4y6WT6XKqQBSED/sioiLK5hKNmrhnu9/7P9qFSmSgYlKx/P51DwM9cxr5ooiDZ7mbAcG7Lfdiksr9LHj4bkZ5T5dbOBBKm/7DBIi1aUf+zJBR2/Bd0Jarof1ienb1QGT5h5X8zu6NZnjbMnDmF8cLz0sH8P7F4dXN9kY/n6Tk2ArTN+BRyTEwWkRPIpvZq7R46S27LhVuqbYjonrpyYT5ppa9SSlPF8W+XijW72MAx5suButqQ85YXQok61o9d6E5Qje4xJgBGGavUIvT+gy7ELJGI2PMnL5K+vk93XeoJhBJC5zLCQL2RTNK+f7RRFX7EUs+Fq+AZn3vAd3PqWdgKfdDI9AlIVeWYXQOLjj7gVyBpApsBXgnZRYamS1HXPW7phgTmOVDucoY2fpAJoptzLS8BVCdMwG6Z/mJTqoBab9pJXR3YmtYteODaw7kN45mtm4ZIW8ikUeoSgnzjtyGjjHUZ63KbFNLbmUFBiQDuRPfc7S+3MR/8bIsB1pxRboAAAAASUVORK5CYII=">
+            Made by hand in over 75 cities around the world.</strong></p2>
+
+        </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+</html>

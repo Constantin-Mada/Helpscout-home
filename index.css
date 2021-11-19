@@ -1,0 +1,340 @@
+/***************************************************************
+CSS Reset
+***************************************************************/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box ;
+
+}
+
+
+
+/***************************************************************
+Base Rules
+***************************************************************/
+
+h1{
+    color: black;
+    font-size: 2.4rem;
+    font-weight: 600;
+}
+p{
+    font-size: 1.2rem;
+}
+p1{
+    font-size: 1rem;
+    font-style: normal;
+}
+p2{
+    font-size: 0.9rem;
+}
+h4{
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+h5{
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/***************************************************************
+Layout Rules
+***************************************************************/
+.container-fluid{
+   padding: 0 2rem;
+    margin: 0 auto;
+      
+}
+body{
+    color: rgb(85, 101, 117);
+    margin: 0 auto;
+    overflow: auto;
+}
+
+
+
+/**************************************************************
+Components
+**************************************************************/
+.form {
+    
+   width: 65%;
+    padding: 0.3rem;
+    height: 3rem;
+}
+.support button{
+    width: 30%;
+}
+.experience{
+    background-color: rgb(248, 250, 255);
+
+}
+.experience-image img{
+    width: 25%;
+    padding: 0 1rem;
+
+}
+.experience-text a{
+    font-size: 1.3rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+.experience-video::before{
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 1;
+    background: url("https://www.helpscout.com/images/pages/home/Home-OurPeople-Sparkles-TopRight.png") center center / 100% no-repeat;
+   
+    width: 9%;
+   
+    height: 20.6%;
+    
+    top:1%;
+    right: 4%
+}
+.experience-video::after{
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 1;
+    background: url("https://www.helpscout.com/images/pages/home/Home-OurPeople-Sparkles-BottomLeft.png") center center / 100% no-repeat;
+    width: 3%;
+    
+    height: 35px;
+    bottom: 32%;
+    left: 23%
+}
+.sparkletitle{
+    position: relative;
+    text-align: center;
+   
+    
+    
+}
+.sparkletitle::after, .sparkletitle::before{
+    content: "";
+    display: block;
+    position: absolute;
+    background: url(https://www.helpscout.com/static/sparkle-right-51e36ac7bfdde5b2faa729788e1d4485.gif) left top / 75px 111px no-repeat;
+    height: 150px;
+    width: 100px;
+    top: -120%;
+    right: 0;
+}
+.sparkletitle::after{
+    right: 21%;
+}
+.sparkletitle::before{
+   
+    left: 21%;
+}
+.customer-link{
+    position: relative;
+    display: inline-block;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+.customer-link::after{
+    border-top-width: 2px;
+    border-top-style: solid;
+    border-right-width: 2px;
+    border-right-style: solid;
+    content: "";
+    display: inline-block;
+    margin-left: 0.3em;
+    pointer-events: none;
+    width: 6px;
+    height: 6px;
+    transform: rotate(45deg);
+    transition: all 0.15s ease 0s;
+    vertical-align: middle;
+    position: relative;
+    right: 0px;
+}
+.review-image{
+    margin-top: -7rem;
+}
+
+.image-chat{
+    position: relative;
+    
+    top: 23%;
+}
+
+.image-chat img{
+    height: 8rem;
+}
+.image-chat span{
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 0px;
+    background: rgb(242, 52, 89);
+    border-radius: 50%;
+    animation: 2s linear 0s infinite normal none running 
+}
+.power img{
+    width: 45%;
+    object-fit: cover;
+    float: right;
+    bottom: 10%;
+}
+.video-shadow{
+    display: flex;
+    align-items: flex-end;
+}
+.video-shadow::after{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    z-index: -1;
+   margin-bottom: -2rem;
+    width: 85%;
+    height: 40%;
+    background: rgb(249, 250, 250);
+    border-radius: 6px;
+}
+.power .video-shadow::after{
+    left: 6%;
+    
+}
+.customer .video-shadow::after{
+    right: 6%;
+}
+.feedback-text{
+    z-index: 1;
+}
+.feedback-img{
+   
+    width: 85%;
+  
+    right: 0;
+    
+}
+.feedback button{
+    width: 100%;
+}
+.footer{
+    background: rgb(29, 43, 54);
+    color: white;
+}
+.logo{
+    width: 2.2rem;
+    height: 2.2rem;
+}
+.logo_column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 0.8px solid rgb(147, 161, 176);
+}
+.footer_link{
+    color: rgb(147, 161, 176);
+    font-size: 14px;
+    line-height: 20px;
+    text-decoration: none;
+    padding-top: 0.4rem;
+}
+.sitefooter{
+    display: flex;
+    justify-content: space-between;
+}
+.sitefooter ul, .sitefooter p2{
+    justify-content: center;
+    display: flex;
+}
+/***********************************************************
+Media queries
+***********************************************************/
+@media only screen and (min-width:992px){
+    .experience-video::before{
+        top:2%
+    }
+    .feedback-img{
+        z-index: 0;
+    width: 150%;
+    height: auto;
+    
+   padding-top: 2rem;
+    right: 0;
+    }
+    .logo_column{
+        align-items: flex-start;
+        border: 0;
+    }
+    .sitefooter{
+        border-top: 0.8px solid rgb(147, 161, 176);
+    }
+    .sitefooter ul{
+        justify-content: flex-start;
+    }
+    .sitefooter p2{
+        justify-content: flex-end;
+    }
+}
+@media only screen and (max-width:765px){
+    .sparkletitle::after{
+        right: 0%;
+    }
+    .sparkletitle::before{
+       
+        left: 10%;
+    }
+    .footer_column{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+}
+@media only screen and (min-width:767px){
+    
+    .power .video-shadow::after {
+        
+         margin-right: 20%;
+    }
+    .customer .video-shadow::after{
+       
+        margin-left: 20%;
+    }
+    .video-shadow::after {  
+        width: 41%; 
+        height: 50%;       
+       
+    }
+    .support-video{
+        align-items:center;
+        padding: 0;
+        width: 60%;
+        height: 50%;    
+        position: absolute;
+      
+        right: 0;
+        
+    }
+    .feedback button{
+        width: 30%;
+    }
+}
+@media only screen and (max-width:768px) {
+
+    .footer_column li{
+        display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    }
+}
+@media only screen and (min-width:576px){
+    .experience-image img{
+        width: 100%;
+        padding: 0 1.4rem 1.4rem 1.4rem;
+    
+    }
+}
